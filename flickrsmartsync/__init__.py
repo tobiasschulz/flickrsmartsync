@@ -73,7 +73,7 @@ def start_sync(sync_path, cmd_args):
 
     # custom set builder
     def get_custom_set_title(path):
-        title = path.split('/').pop()
+        title = path.replace(sync_path, "").replace("/", "-") #.split('/').pop()
 
         if cmd_args.custom_set:
             m = re.match(cmd_args.custom_set, path)
@@ -114,7 +114,7 @@ def start_sync(sync_path, cmd_args):
             if desc:
                 photo_sets_map[desc] = set['id']
                 title = get_custom_set_title(sync_path + desc)
-                if cmd_args.update_custom_set and desc in photo_set and title != set['title']['_content']:
+                if True: #cmd_args.update_custom_set and desc in photo_set and title != set['title']['_content']:
                     update_args = args.copy()
                     update_args.update({
                         'photoset_id': set['id'],
