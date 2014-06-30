@@ -122,7 +122,10 @@ def start_sync(sync_path, cmd_args):
                         'description': desc
                     })
                     print 'Updating custom title [%s]...' % title
-                    json.loads(api.photosets_editMeta(**update_args))
+                    try:
+                        json.loads(api.photosets_editMeta(**update_args))
+                    except:
+                        pass
                     print 'done'
 
     print 'Found %s photo sets' % len(photo_sets_map)
